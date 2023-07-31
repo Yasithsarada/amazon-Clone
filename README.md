@@ -1,8 +1,5 @@
 <<<<<<< HEAD
 # amazon-Clone
-amazon clone
-=======
-# amazon_clone
 
 A new Flutter project.
 
