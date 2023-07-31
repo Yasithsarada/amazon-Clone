@@ -1,0 +1,82 @@
+const express = require('express');
+const Product = require('../model/product');
+const auth = require('../middleware/auth');
+const productRouter = express.Router();
+
+productRouter.get('/api/products',auth,async (req,res)  => {
+    try {
+        console.log('it s heee');
+        console.log(req.query.category);
+
+        const products = await Product.find({category : req.query.category});
+        res.json(products);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+});
+
+productRouter.get('/api/products/search/:name' ,auth ,async (req, res) => {
+    try {
+        const products = await Product.find({
+            name : {$regex : req.params.name,$options: 'i'}});
+            res.json(products);
+        } 
+    catch (error) {
+     res.status(400).json({message: error.message});
+ }
+});
+
+
+productRouter.post('/api/rate-product', auth ,async (req, res) => {
+    try {
+        const {id , rating} = req.body;
+        // console.log('it s ratinggg');
+        // console.log(rating);
+        // console.log(id);
+        let product = await Product.findById(id);
+
+        // if (product){
+        //     console.log('product found');
+        // }
+        // for (let i = 0; i < product.ratings.length; i++) {
+        //     if(product.ratings[i].userId == req.user){
+        //         product.ratings.splice(i,1);
+        //         console.log(user);
+        //         break;
+        //     }
+            
+        // }
+        
+        // const ratingSchema = {
+        //     userId : req.uesr,
+        //     rating 
+        // }
+        // product.ratings.push(ratingSchema);
+        // product = await product.save();
+        // console.log(product);
+        // res.json(product);
+
+        for (let i = 0; i < product.ratings.length; i++) {
+            if (product.ratings[i].userId == req.user) {
+              product.ratings.splice(i, 1);
+              break;
+            }
+          }
+          
+        console.log(req.user);
+
+          const ratingSchema = {
+            userId: req.user,
+            rating,
+          };
+      
+          product.ratings.push(ratingSchema);
+          product = await product.save();
+          res.json(product);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+})
+
+
+module.exports = productRouter;
