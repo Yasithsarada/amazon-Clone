@@ -9,6 +9,14 @@ class DealOfTheDay extends StatefulWidget {
 
 class _DealOThefDayState extends State<DealOfTheDay> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchDealOfTheDay();
+  }
+
+  void fetchDealOfTheDay() async {}
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [

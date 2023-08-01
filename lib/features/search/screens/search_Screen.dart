@@ -3,8 +3,10 @@ import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/auth/screens/home/widget/address_box.dart';
 import 'package:amazon_clone/features/search/services/search_sercvices.dart';
 import 'package:amazon_clone/models/product.dart';
+import 'package:amazon_clone/provider/user_Provider.dart';
 import 'package:flutter/material.dart';
 import 'package:amazon_clone/features/search/widgets/searched_product.dart';
+import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = '/search-screen';
@@ -17,6 +19,8 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final SearchServices searchServices = SearchServices();
   List<Product>? products;
+   double avgRating = 0;
+  double myRating = 0;
   @override
   void initState() {
     super.initState();
@@ -34,6 +38,31 @@ class _SearchScreenState extends State<SearchScreen> {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
 
+   double starsCalc(
+      {
+      required BuildContext context,
+      required double myRating,
+      required Product product
+      }
+      ) {
+    double totalRating = 0;
+    for (var i = 0; i < product.rating!.length; i++) {
+      totalRating += product.rating![i].rating;
+      if (product.rating![i].userId ==
+          Provider.of<UserProvider>(context, listen: false).user.id) {
+        myRating = product.rating![i].rating;
+      }
+      if (totalRating != 0) {
+        avgRating = totalRating / product.rating!.length;
+        print("avgRating");
+        print(avgRating);
+      }
+    }
+    setState(() {});
+    return avgRating;
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
