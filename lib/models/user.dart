@@ -8,15 +8,18 @@ class User {
   final String address;
   final String type;
   final String token;
+  final List<dynamic> cart;
 
-  User(
-      {required this.id,
-      required this.name,
-      required this.password,
-      required this.email,
-      required this.address,
-      required this.type,
-      required this.token});
+  User({
+    required this.id,
+    required this.name,
+    required this.password,
+    required this.email,
+    required this.address,
+    required this.type,
+    required this.token,
+    required this.cart,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -26,7 +29,8 @@ class User {
       'password': password,
       'address': address,
       'type': type,
-      'token': token
+      'token': token,
+      'cart': cart
     };
   }
 
@@ -34,15 +38,17 @@ class User {
     return User(
         id: map['_id'] ?? '',
         name: map['name'] ?? '',
-        
         email: map['email'] ?? '',
         password: map['password'] ?? '',
         address: map['address'] ?? '',
         type: map['type'] ?? '',
-        token: map['token'] ?? '');
+        token: map['token'] ?? '',
+        cart: List<Map<String, dynamic>>.from(
+          map['cart']?.map(
+            (x) => Map<String, dynamic>.from(x),
+          ),
+        ));
   }
-
   String toJson() => json.encode(toMap());
   factory User.fromJson(String source) => User.fromMap(json.decode(source));
 }
-

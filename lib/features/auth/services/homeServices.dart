@@ -60,6 +60,7 @@ class HomeServices {
           'X-auth-token': userProvider.user.token,
         },
       );
+      print("deaaaaaaaaaal");
       httpErrorHandle(
           response: res,
           context: context,

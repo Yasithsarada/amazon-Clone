@@ -28,6 +28,7 @@ productRouter.get('/api/products/search/:name' ,auth ,async (req, res) => {
 
 
 productRouter.post('/api/rate-product', auth ,async (req, res) => {
+ 
     try {
         const {id , rating} = req.body;
         // console.log('it s ratinggg');
@@ -79,11 +80,14 @@ productRouter.post('/api/rate-product', auth ,async (req, res) => {
 })
 
 
-productRouter.get('api/deal-of-the-day', async (req, res) => {   
+productRouter.get('/api/deal-of-the-day', auth ,async (req, res) => {   
+
     try {
-        let highestRating = 0;
-        let highestRatedProduct = 0;
-        const products = await Product.find({});
+        console.log("called");
+        // let highestRating = 0;
+        // let highestRatedProduct = 0;
+        let products = await Product.find({});
+        console.log("products[0]");
         
         // for (let i = 0; i < products.length; i++) {
             //     for (var i = 0; i < products.ratings.length; i++) {
@@ -116,6 +120,9 @@ productRouter.get('api/deal-of-the-day', async (req, res) => {
 
         return aSum < bSum ? 1 : -1;
         });
+
+    console.log(products[0]);
+    res.json(products[0]);
     } catch (error) {
         res.status(400).json({message: error.message});
     }

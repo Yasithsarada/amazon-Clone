@@ -10,8 +10,9 @@ class UserProvider extends ChangeNotifier {
       password: '',
       email: '',
       address: '',
-      type: '',
-      token: '');
+      type: '', 
+      token: '',
+      cart: []);
   User get user => _user;
 
   void setUser(String user) {
