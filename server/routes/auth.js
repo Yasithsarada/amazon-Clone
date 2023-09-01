@@ -39,14 +39,19 @@ authRouter.post('/api/signup', async(req ,res) => {
 authRouter.post('/api/signin',async (req,res) => {
  
 try {
+    console.log('sign in working......');
     const {email , password} = req.body;
-
     const user = await User.findOne({email});
+    console.log(user);
     
     if(!user){
+        console.log('nooo');
         return res.status(400).json({msg : "User doesn't exist with the entered email"});
     }
     const isMatch = await bcryptjs.compare(password , user.password);
+    console.log(isMatch);
+
+    
 // console.log(isMatch);
     if(!isMatch){
         return res.status(400).json({msg : "Invalid password"});
@@ -56,12 +61,15 @@ try {
     
     
     const token =  jwt.sign({id : user._id} , "passwordKey"); //generate token using id(user._id) and secret key
+    console.log(token);
+   
     res.json({token,...user._doc});
-    // console.log(user._doc);
+    console.log(user._doc);
      // Overall, this code generates a JWT based on the user's ID and a secret key, and sends it back to the client along with additional user information in a JSON response. The client can then use this token for authentication or authorization purposes in subsequent requests.
     // console.log(p);
     // console.log(res.body);
 } catch (error) {
+    console.log("check thisssssssssssssssssssssssssssssssssss");
     res.status(400).json({error : error.message});
 }
 });

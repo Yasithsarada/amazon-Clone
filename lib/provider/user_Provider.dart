@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 
 class UserProvider extends ChangeNotifier {
   User _user = User(
-      id: '',
-      name: '',
-      password: '',
-      email: '',
-      address: '',
-      type: '', 
-      token: '',
-      cart: []);
+    id: '',
+    name: '',
+    password: '',
+    email: '',
+    address: '',
+    type: '',
+    token: '',
+    cart: [],
+  );
   User get user => _user;
 
   void setUser(String user) {
@@ -20,5 +21,10 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
     // print("set user");
     // print(user);
+  }
+
+  void setUserFromModel(User user) {
+    _user = user;
+    notifyListeners();
   }
 }

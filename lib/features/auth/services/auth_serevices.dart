@@ -19,13 +19,15 @@ class AuthService {
       required String name}) async {
     try {
       User user = User(
-          id: '',
-          name: name,
-          password: password,
-          email: email,
-          address: '',
-          type: '',
-          token: '');
+        id: '',
+        name: name,
+        password: password,
+        email: email,
+        address: '',
+        type: '',
+        token: '',
+        cart: [],
+      );
       http.Response res = await http.post(
         Uri.parse('$uri/api/signup'),
         body: user.toJson(),
@@ -73,6 +75,7 @@ class AuthService {
         response: res,
         context: context,
         onSuccess: () async {
+          print('came');
           SharedPreferences pref = await SharedPreferences.getInstance();
           // if (!context.mounted) return;
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
