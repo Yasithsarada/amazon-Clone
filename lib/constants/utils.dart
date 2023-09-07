@@ -21,8 +21,8 @@ Future<List<File>> pickImages() async {
         images.add(File(files.files[i].path!));
       }
     }
-    
   } catch (e) {
+    print('this is errorrr');
     debugPrint(e.toString());
   }
   return images;

@@ -25,8 +25,8 @@ class SearchServices {
         },
       );
       httpErrorHandle(
-        response: res,  
-        context: context, 
+        response: res,
+        context: context,
         onSuccess: () {
           for (var i = 0; i < jsonDecode(res.body).length; i++) {
             productList.add(

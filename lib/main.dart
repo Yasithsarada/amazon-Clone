@@ -29,16 +29,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   final AuthService authService = AuthService();
+  final _messangerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
   void initState() {
     super.initState();
-    authService.getUserData(context: context);
+    authService.getUserData(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: _messangerKey,
       debugShowCheckedModeBanner: false,
       title: 'Amazon Clone',
       theme: ThemeData(

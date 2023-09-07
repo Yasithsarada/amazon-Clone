@@ -56,6 +56,9 @@ class AuthService {
     required String password,
   }) async {
     try {
+      print('8.29');
+      print(email);
+      print(password);
       http.Response res = await http.post(
         Uri.parse('$uri/api/signin'),
         body: jsonEncode({
@@ -66,8 +69,8 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      // print("working");
-      // print(res.body);
+      print("working");
+      print(res.body);
       // if (!context.mounted) {
       //   return;
       // }
@@ -75,7 +78,7 @@ class AuthService {
         response: res,
         context: context,
         onSuccess: () async {
-          print('came');
+          // print('came');
           SharedPreferences pref = await SharedPreferences.getInstance();
           // if (!context.mounted) return;
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
@@ -97,22 +100,26 @@ class AuthService {
     }
   }
 
-  void getUserData({BuildContext? context}) async {
+  void getUserData(BuildContext context) async {
     try {
+      print('get');
       SharedPreferences pref = await SharedPreferences.getInstance();
       String? token = pref.getString('X-auth-token');
+      print(token);
 
       if (token == null) {
         pref.setString('X-auth-token', '');
+        print('meeeeeeeeeeeeee');
       }
-      var tokenRes = await http.get(
+      var tokenRes = await http.post(
         Uri.parse('$uri/tokenIsValid'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'X-auth-token': token!
         },
       );
-
+      print("tokenRes");
+      print(tokenRes);
       var response = jsonDecode(tokenRes.body);
 
       if (response == true) {
@@ -124,13 +131,17 @@ class AuthService {
             'X-auth-token': token
           },
         );
-        var userProvider = Provider.of<UserProvider>(context!, listen: false);
+        print("userRes");
+        print(userRes.body);
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
         // print('user res :');
         // print(userRes.body);
         userProvider.setUser(userRes.body);
       }
     } catch (e) {
-      showSnackBar(context!, e.toString());
+      // showSnackBar(context, e.toString());
+      print('get user data error.....');
+      print(e);
     }
   }
 }

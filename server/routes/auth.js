@@ -37,9 +37,9 @@ authRouter.post('/api/signup', async(req ,res) => {
 
 
 authRouter.post('/api/signin',async (req,res) => {
- 
-try {
+    
     console.log('sign in working......');
+try {
     const {email , password} = req.body;
     const user = await User.findOne({email});
     console.log(user);
@@ -76,17 +76,27 @@ try {
 
 
 
-authRouter.get('/tokenIsValid', async(req, res) => {
+authRouter.post('/tokenIsValid', async(req, res) => {
 
-    const token = req.header('X-auth-token');
+   try {
+    console.log('i ve called');
+     const token = req.header('X-auth-token');
+     console.log('token is received -get');
+     if(!token) return res.json(false);
+     
+     const verified = jwt.verify(token ,"passwordKey" );
+     console.log('token verified - get');
+     if (!verified) return res.json(false);
+     
+     const user = await User.findById(verified.id);
+     if (!user) return res.json(false);
 
-    if(!token) return res.json(false);
-    
-    const verified = jwt.verify(token ,"passwordKey" );
 
-    if (!verified) return res.json(false);
-    
-    res.json(true);
+     res.json(true);
+   } catch (error) {
+    console.log("check thisss tokenIsValid");
+    res.status(400).json({error : error.message});
+   }
     
 });
 

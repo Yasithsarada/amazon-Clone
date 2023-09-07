@@ -1,7 +1,7 @@
 import 'package:amazon_clone/common/widgtes/custom_button.dart';
 import 'package:amazon_clone/common/widgtes/stars.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/product%20details/services/product_services.dart';
+import 'package:amazon_clone/features/auth/widegts/product details/services/product_services.dart';
 import 'package:amazon_clone/features/search/screens/search_Screen.dart';
 import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/provider/user_Provider.dart';
@@ -227,8 +227,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomButton(
-                // onTap: addToCart,
                 onTap: addToCart,
+                // onTap: () {},
                 text: 'Add to Cart',
                 fgrndcColor: Colors.black,
               ),

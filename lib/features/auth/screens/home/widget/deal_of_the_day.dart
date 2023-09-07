@@ -16,14 +16,17 @@ class _DealOThefDayState extends State<DealOfTheDay> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchDealOfTheDay();
   }
 
   void fetchDealOfTheDay() async {
     product = await homeServices.fetchDealOfTheDay(context: context);
-    setState(() {});
+    if (mounted) {
+      setState(() {
+        // Your state change code goes here
+      });
+    }
   }
 
   @override

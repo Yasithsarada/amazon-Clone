@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const auth = async (req ,res ,next) => {
     try {
+        console.log("workinkg middleware");
         const token = req.header('X-auth-token');
         
         if(!token){
@@ -16,7 +17,6 @@ const auth = async (req ,res ,next) => {
         req.mynm = 'yasith';    
         // console.log(verified);
         // console.log(user);
-        console.log("workinkg middleware");
         next();
     } catch (error) {
         res.status(500).json({error : error});

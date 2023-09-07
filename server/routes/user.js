@@ -8,9 +8,16 @@ const userRouter = express.Router();
 userRouter.post("/api/add-to-cart", auth, async (req, res) => {
     try {
       const { id } = req.body;
+      console.log(id);
+      console.log('kjjjjjj');
+      
       const product = await Product.findById(id);
+      if (!product) {
+        console.log('that s yyyy');
+      }
+      console.log(product);
       let user = await User.findById(req.user);
-  
+      console.log(req.user);
       if (user.cart.length == 0) {
         user.cart.push({ product, quantity: 1 });
       } else {

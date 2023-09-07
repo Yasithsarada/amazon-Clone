@@ -42,6 +42,7 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   void signInUser() {
+    // print('8.28');
     authService.signInUser(
       context: context,
       email: _emailController.text,

@@ -1,6 +1,7 @@
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/auth/screens/account/screens/account_Screen.dart';
 import 'package:amazon_clone/features/auth/screens/home/screens/home_Screen.dart';
+import 'package:amazon_clone/features/cart/screens/cart_screens.dart';
 import 'package:amazon_clone/provider/user_Provider.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
@@ -24,9 +25,7 @@ class _BottomBarState extends State<BottomBar>
   List<Widget> pageList = [
     const HomeScreen(),
     const AccountScreen(),
-    const Center(
-      child: Text("Cart page"),
-    )
+    const CartScreen()
   ];
 
   void updatePage(int page) {
@@ -115,6 +114,7 @@ class _BottomBarState extends State<BottomBar>
                 ),
                 position: badges.BadgePosition.topEnd(top: -14),
                 badgeContent: Text(
+                  // '3',
                   userCartLen.toString(),
                   style: TextStyle(color: Colors.white),
                 ),

@@ -1,5 +1,5 @@
 import 'package:amazon_clone/common/widgtes/stars.dart';
-import 'package:amazon_clone/features/product%20details/screens/product_detail_screen.dart';
+import 'package:amazon_clone/features/auth/widegts/product%20details/screens/product_detail_screen.dart';
 import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/provider/user_Provider.dart';
 import 'package:flutter/material.dart';

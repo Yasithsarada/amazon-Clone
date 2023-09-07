@@ -29,7 +29,7 @@ class ProductDetailServices {
           },
         ),
       );
-      // print(product.id);
+      print(product.id);
       // print(res);
       // ignore: use_build_context_synchronously
       httpErrorHandle(
@@ -43,6 +43,7 @@ class ProductDetailServices {
       );
     } catch (e) {
       showSnackBar(context, e.toString());
+      print(e);
     }
   }
 
@@ -80,6 +81,7 @@ class ProductDetailServices {
       );
     } catch (e) {
       showSnackBar(context, e.toString());
+      print(e);
     }
   }
 }
