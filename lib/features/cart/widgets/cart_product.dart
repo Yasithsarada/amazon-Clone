@@ -1,4 +1,5 @@
 import 'package:amazon_clone/features/auth/widegts/product%20details/services/product_services.dart';
+import 'package:amazon_clone/features/cart/services/cart%20Services.dart';
 import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/provider/user_Provider.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,17 @@ class _CartProductState extends State<CartProduct> {
     final product = Product.fromMap(productCart['product']);
     final quantity = productCart['quantity'];
     final ProductDetailServices productDetailServices = ProductDetailServices();
+    final CartServices cartServices = CartServices();
 
     void increaseQuantity(Product product) {
       productDetailServices.addToCart(
+        context: context,
+        product: product,
+      );
+    }
+
+    void descreaseQuantity(Product product) {
+      cartServices.removeFromCart(
         context: context,
         product: product,
       );
@@ -101,12 +110,15 @@ class _CartProductState extends State<CartProduct> {
                   color: Colors.black12),
               child: Row(
                 children: [
-                  Container(
-                    width: 35,
-                    height: 32,
-                    child: const Icon(
-                      Icons.remove,
-                      size: 18,
+                  InkWell(
+                    onTap: () => descreaseQuantity(product),
+                    child: Container(
+                      width: 35,
+                      height: 32,
+                      child: const Icon(
+                        Icons.remove,
+                        size: 18,
+                      ),
                     ),
                   ),
                   DecoratedBox(

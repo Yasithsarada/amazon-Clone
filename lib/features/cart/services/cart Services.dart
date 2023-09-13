@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 class CartServices {
-  void addToCart({
+  void removeFromCart({
     required BuildContext context,
     required Product product,
   }) async {
@@ -46,6 +46,4 @@ class CartServices {
       print(e);
     }
   }
-
-
 }
