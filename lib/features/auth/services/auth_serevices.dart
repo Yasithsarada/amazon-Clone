@@ -56,9 +56,6 @@ class AuthService {
     required String password,
   }) async {
     try {
-      print('8.29');
-      print(email);
-      print(password);
       http.Response res = await http.post(
         Uri.parse('$uri/api/signin'),
         body: jsonEncode({

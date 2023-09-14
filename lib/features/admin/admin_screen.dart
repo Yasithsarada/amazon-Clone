@@ -11,8 +11,8 @@ class AdminScreen extends StatefulWidget {
 
 class _AdminScreenState extends State<AdminScreen> {
   int _page = 0;
-  double BottomBarWidth = 42;
-  double BottomBorderBarWidth = 5;
+  double bottomBarWidth = 42;
+  double bottomBorderBarWidth = 5;
 
   List<Widget> pageList = [
     const PostScreen(),
@@ -80,14 +80,14 @@ class _AdminScreenState extends State<AdminScreen> {
           BottomNavigationBarItem(
             icon: Container(
               //post
-              width: BottomBarWidth,
+              width: bottomBarWidth,
               decoration: BoxDecoration(
                   border: Border(
                 top: BorderSide(
                   color: _page == 0
                       ? GLobalVariables.selectedNavBarColor
                       : GLobalVariables.backgroundColor,
-                  width: BottomBorderBarWidth,
+                  width: bottomBorderBarWidth,
                 ),
               )),
               //home
@@ -98,14 +98,14 @@ class _AdminScreenState extends State<AdminScreen> {
           //analytics
           BottomNavigationBarItem(
             icon: Container(
-              width: BottomBarWidth,
+              width: bottomBarWidth,
               decoration: BoxDecoration(
                   border: Border(
                 top: BorderSide(
                   color: _page == 1
                       ? GLobalVariables.selectedNavBarColor
                       : GLobalVariables.backgroundColor,
-                  width: BottomBorderBarWidth,
+                  width: bottomBorderBarWidth,
                 ),
               )),
               child: const Icon(Icons.analytics_outlined),
@@ -116,14 +116,14 @@ class _AdminScreenState extends State<AdminScreen> {
           //Orders
           BottomNavigationBarItem(
             icon: Container(
-              width: BottomBarWidth,
+              width: bottomBarWidth,
               decoration: BoxDecoration(
                   border: Border(
                 top: BorderSide(
                   color: _page == 2
                       ? GLobalVariables.selectedNavBarColor
                       : GLobalVariables.backgroundColor,
-                  width: BottomBorderBarWidth,
+                  width: bottomBorderBarWidth,
                 ),
               )),
               child: const Icon(Icons.all_inbox_outlined),

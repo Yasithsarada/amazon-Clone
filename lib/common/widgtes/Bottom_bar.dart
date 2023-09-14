@@ -19,8 +19,8 @@ class _BottomBarState extends State<BottomBar>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   int _page = 0;
-  double BottomBarWidth = 42;
-  double BottomBorderBarWidth = 5;
+  double bottomBarWidth = 42;
+  double bottomBorderBarWidth = 5;
 
   List<Widget> pageList = [
     const HomeScreen(),
@@ -62,14 +62,14 @@ class _BottomBarState extends State<BottomBar>
           BottomNavigationBarItem(
             icon: Container(
               //home
-              width: BottomBarWidth,
+              width: bottomBarWidth,
               decoration: BoxDecoration(
                   border: Border(
                 top: BorderSide(
                   color: _page == 0
                       ? GLobalVariables.selectedNavBarColor
                       : GLobalVariables.backgroundColor,
-                  width: BottomBorderBarWidth,
+                  width: bottomBorderBarWidth,
                 ),
               )),
               //home
@@ -80,14 +80,14 @@ class _BottomBarState extends State<BottomBar>
           //account
           BottomNavigationBarItem(
             icon: Container(
-              width: BottomBarWidth,
+              width: bottomBarWidth,
               decoration: BoxDecoration(
                   border: Border(
                 top: BorderSide(
                   color: _page == 1
                       ? GLobalVariables.selectedNavBarColor
                       : GLobalVariables.backgroundColor,
-                  width: BottomBorderBarWidth,
+                  width: bottomBorderBarWidth,
                 ),
               )),
               child: const Icon(Icons.person_outline_outlined),
@@ -98,14 +98,14 @@ class _BottomBarState extends State<BottomBar>
           //cart
           BottomNavigationBarItem(
             icon: Container(
-              width: BottomBarWidth,
+              width: bottomBarWidth,
               decoration: BoxDecoration(
                   border: Border(
                 top: BorderSide(
                   color: _page == 2
                       ? GLobalVariables.selectedNavBarColor
                       : GLobalVariables.backgroundColor,
-                  width: BottomBorderBarWidth,
+                  width: bottomBorderBarWidth,
                 ),
               )),
               child: badges.Badge(
