@@ -53,8 +53,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       );
 
     case AddressScreen.routeName:
+      final totalAM = routeSettings.arguments as String;
       return MaterialPageRoute(
-        builder: (_) => const AddressScreen(),
+        builder: (_) => AddressScreen(
+          totalAmount: totalAM,
+        ),
       );
 
     default:
