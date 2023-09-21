@@ -102,33 +102,35 @@ class _CartScreenState extends State<CartScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(children: [
-          const AddressBox(),
-          const CartSubTotal(),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CustomButton(
-              text: 'Proceed to Buy (${user.cart.length} items)',
-              onTap: () => navigateToAddressScreen(sum),
-              bgColor: Colors.yellow[600],
-              fgrndcColor: Colors.black,
+        child: Column(
+          children: [
+            const AddressBox(),
+            const CartSubTotal(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomButton(
+                text: 'Proceed to Buy (${user.cart.length} items)',
+                onTap: () => navigateToAddressScreen(sum),
+                bgColor: Colors.yellow[600],
+                fgrndcColor: Colors.black,
+              ),
             ),
-          ),
-          const SizedBox(height: 15),
-          Container(
-            color: Colors.black12.withOpacity(0.08),
-            height: 1,
-          ),
-          const SizedBox(height: 5),
-          ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: user.cart.length,
-            itemBuilder: (context, index) {
-              return CartProduct(index: index);
-            },
-          ),
-        ]),
+            const SizedBox(height: 15),
+            Container(
+              color: Colors.black12.withOpacity(0.08),
+              height: 1,
+            ),
+            const SizedBox(height: 5),
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: user.cart.length,
+              itemBuilder: (context, index) {
+                return CartProduct(index: index);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
