@@ -116,7 +116,7 @@ class _BottomBarState extends State<BottomBar>
                 badgeContent: Text(
                   // '3',
                   userCartLen.toString(),
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 child: const Icon(Icons.shopping_cart),
               ),
