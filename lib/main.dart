@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   final AuthService authService = AuthService();
   final _messangerKey = GlobalKey<ScaffoldMessengerState>();
-//
+
   @override
   void initState() {
     super.initState();
