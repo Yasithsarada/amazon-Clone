@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       scaffoldMessengerKey: _messangerKey,
-      debugShowCheckedModeBanner: false, //
+      debugShowCheckedModeBanner: false,
       title: 'Amazon Clone',
       theme: ThemeData(
         scaffoldBackgroundColor: GLobalVariables.backgroundColor,
