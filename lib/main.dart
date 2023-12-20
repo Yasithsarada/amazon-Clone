@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      scaffoldMessengerKey: _messangerKey, //
+      scaffoldMessengerKey: _messangerKey, 
       debugShowCheckedModeBanner: false,
       title: 'Amazon Clone',
       theme: ThemeData(
