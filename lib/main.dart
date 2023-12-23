@@ -35,12 +35,12 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     authService.getUserData(context);
-  }
+  } //
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      scaffoldMessengerKey: _messangerKey, 
+      scaffoldMessengerKey: _messangerKey,
       debugShowCheckedModeBanner: false,
       title: 'Amazon Clone',
       theme: ThemeData(
