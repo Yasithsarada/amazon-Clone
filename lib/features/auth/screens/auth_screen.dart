@@ -4,7 +4,6 @@ import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/auth/services/auth_serevices.dart';
 import 'package:flutter/material.dart';
 
-//yasith
 enum Auth { signin, signup }
 
 class AuthScreen extends StatefulWidget {
