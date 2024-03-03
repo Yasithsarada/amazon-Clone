@@ -7,7 +7,7 @@ import 'package:amazon_clone/features/auth/screens/home/screens/home_Screen.dart
 import 'package:amazon_clone/features/auth/widegts/product%20details/screens/product_detail_screen.dart';
 import 'package:amazon_clone/features/search/screens/search_Screen.dart';
 import 'package:amazon_clone/models/product.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';//
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
