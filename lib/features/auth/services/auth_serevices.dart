@@ -3,7 +3,7 @@ import 'package:amazon_clone/common/widgtes/Bottom_bar.dart';
 import 'package:amazon_clone/constants/error_handling.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart';
-import 'package:amazon_clone/models/user.dart';
+import 'package:amazon_clone/models/user.dart';//
 import 'package:amazon_clone/provider/user_Provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
